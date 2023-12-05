@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huachuan.dao.StudentMapper" >
+    <resultMap id="BaseResultMap" type="com.huachuan.domain.Student">
+        <id column="id" property="id" jdbcType="INTEGER"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+        <result column="score" property="score" jdbcType="INTEGER"></result>
+    </resultMap>
+    <sql id="BaseColum" >
+        id, name, age, score
+    </sql>
+    <select id="queryAll" resultMap="BaseResultMap" resultType="com.huachuan.domain.Student">
+        select
+        <include refid="BaseColum"></include>
+        from students
+    </select>
+</mapper>
