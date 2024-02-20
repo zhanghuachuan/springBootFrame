@@ -17,18 +17,19 @@ spring:
     password: "133233"
     url: "jdbc:mysql://8.130.24.206:3306/test?rewriteBatchedStatements=true"
     driver-class-name: com.mysql.cj.jdbc.Driver
-  redis:
-    port: 6379
-    host: 8.130.24.206:3306
-    password: "123456"
-    database: 0
-    lettuce:
-      pool:
-        max-active: 8
-        max-wait: -1ms
-        max-idle: 8
-        min-idle: 0
-    timeout: 3600
+  data:
+    redis:
+      port: 6379
+      host: 8.130.24.206
+      password: 133233
+      database: 0
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 0
+      timeout: 3600
 
 mybatis:
   typeAliasesPackage: com.huachuan.domain
