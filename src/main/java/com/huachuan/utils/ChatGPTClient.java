@@ -26,11 +26,8 @@ import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.StructureDefinition;
 
 public class ChatGPTClient {
-    /**
-     * my-key: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
-     * other-key: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
-     */
-    private static final String API_KEY = "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";
+   
+    private static final String API_KEY = "";
     private static final String API_URL = "https://api.openai.com/v1/chat/completions";
     private final static Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 7890));
     public static String chatWithGPT(String message) {
