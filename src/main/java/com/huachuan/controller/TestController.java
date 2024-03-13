@@ -11,6 +11,7 @@ import com.huachuan.domain.Student;
 import jakarta.annotation.Resource;
 
 import kotlin.collections.ArrayDeque;
+import lombok.extern.slf4j.Slf4j;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.DateType;
@@ -19,6 +20,7 @@ import org.hl7.fhir.r4.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +32,7 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("/test")
+@Slf4j
 public class TestController {
 
     @Resource
@@ -86,7 +89,8 @@ public class TestController {
 
     @RequestMapping("/redis")
     @ResponseBody
-    String redisTest(@RequestBody KV kv){
+    public String redisTest(@RequestBody KV kv){
+        log.info("key : {}, value : {}", kv.getKey(), kv.getValue());
         redisTemplate.boundValueOps(kv.getKey()).set(kv.getValue());
         return (String)redisTemplate.opsForValue().get(kv.getKey()) + "\n";
     }
